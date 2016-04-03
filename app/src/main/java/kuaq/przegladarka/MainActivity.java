@@ -32,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
         //identyfikatory
         putUrl = (EditText)findViewById(R.id.putUrl);
         webView = (WebView)findViewById(R.id.webView);
+        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.reload();
+            }
+        });
+        //edittext funkcje
+        putUrl.clearFocus();
+
 
         //ustaweiania
         webView.getSettings().setJavaScriptEnabled(true);
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //domyslnei ladwoana strona
-        setWebViewUrl(webView, "www.google.com");
+        setWebViewUrl(webView, "www.zst.com.pl");
 
         //pobieranie tekstu po wcisnieciu enter
         putUrl.setOnKeyListener(new View.OnKeyListener(){
@@ -99,11 +109,12 @@ public class MainActivity extends AppCompatActivity {
                 webView.loadUrl(s);
 
             }else{
-            webView.loadUrl("https://"+s);
+            webView.loadUrl("http://"+s);
         }
         }else{
-            webView.loadUrl("https://"+s);
+            webView.loadUrl("http://"+s);
         }
+        System.out.println(webView.getOriginalUrl());
     }
 
     @Override
@@ -117,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            return true;
+            webView.reload();
         }
         return super.onOptionsItemSelected(item);
     }

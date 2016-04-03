@@ -23,7 +23,8 @@
             android:layout_height="match_parent"
             android:id="@+id/putUrl"
             android:background="@android:color/transparent"
-            android:inputType="textUri" />
+            android:inputType="textUri"
+            android:selectAllOnFocus="true"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
